@@ -1,0 +1,13 @@
+<title>Home</title>
+
+{% extends 'base.html' %}
+{% block content %}
+<h3> This is homepage. </h3>
+{% for value in intro %}
+{{value.name}}
+{{value.college}}
+{{value.roll_no}}
+{{value.faculty}}
+<hr>
+{% endfor %}
+{% endblock content %}

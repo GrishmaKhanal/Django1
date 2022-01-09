@@ -1,0 +1,13 @@
+<title>Blog</title>
+
+{% extends 'base.html' %}
+{% block content %}
+<h3> This is BlogPage. </h3>
+{% for value in blog %}
+{{value.title}}
+{{value.author}}
+{{value.content}}
+{{value.date}}
+<hr>
+{% endfor %}
+{% endblock content %}
