@@ -1,3 +1,4 @@
+from django.db.models.fields import PositiveIntegerRelDbTypeMixin
 from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
@@ -19,3 +20,18 @@ def addview(request):
             form.save()
             return redirect('airport')
     return render(request, 'addview.html', {'form' : form})
+
+def update_destination(request, did):
+    dest = airport.objects.get(id =did)
+    form = destform(instance=dest)
+    if request.method == 'POST':
+        form = destform(request.POST, instance=dest)
+        if form.is_valid:
+            form.save()
+            return redirect('airport')
+    return render(request, 'updateDest.html',{'form': form})
+
+def delete_airport(request, did):
+    dest = airport.objects.get(id = did)
+    dest.delete()
+    return redirect('airport')  

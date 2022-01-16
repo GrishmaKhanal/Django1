@@ -16,13 +16,15 @@ Including another URLconf
 from os import name
 from django.contrib import admin
 from django.urls import path
+from authorizee.forms import loginform
 from blog.models import Blog
 from destination_new.models import airport
 
 from home.views import homeview
 from contact.views import contactview
 from blog.views import blogview
-from destination_new.views import addview, airportview, destination_view
+from destination_new.views import addview, airportview, delete_airport, destination_view, update_destination
+from authorizee.views import authview
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -36,6 +38,9 @@ urlpatterns = [
     path('destination/<int:id_val>/', destination_view, name='destination'),
     path("airport/", airportview, name="airport"),    
     path("addview/",addview , name="add-dest"),    
+    path("update/<int:did>/",update_destination, name="update_dest"),    
+    path("delete/<int:did>/",delete_airport, name="delete"),  
+    path('authorize/', authview),
 
 
 ]
