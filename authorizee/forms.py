@@ -10,7 +10,7 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         
-class loginform(forms, form):
+class loginform(forms, forms.Form):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(request, username= username, password=password)
